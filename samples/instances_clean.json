@@ -1,0 +1,9 @@
+{
+  "instances": [
+    {"name": "webshop-api", "labels": ["prod"], "restart_policy": "ALWAYS", "shutdown_timeout": 30,
+     "containers": [{"name": "api", "image_url": "iad.ocir.io/tenancy/webshop/api:v1.4.3",
+                     "env": {"LOG_LEVEL": "info"}}]},
+    {"name": "nightly-etl", "labels": ["batch"], "restart_policy": "ON_FAILURE", "shutdown_timeout": 60,
+     "containers": [{"name": "etl", "image_url": "iad.ocir.io/tenancy/etl:v2.0.0"}]}
+  ]
+}
