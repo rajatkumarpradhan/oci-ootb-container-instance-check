@@ -1,0 +1,13 @@
+{
+  "instances": [
+    {"name": "webshop-api", "labels": ["prod"], "restart_policy": "ALWAYS", "shutdown_timeout": 30,
+     "containers": [{"name": "api", "image_url": "iad.ocir.io/tenancy/webshop/api:v1.4.3",
+                     "env": {"DB_PASSWORD": "s3cret", "LOG_LEVEL": "info"}}]},
+    {"name": "nightly-etl", "labels": ["batch"], "restart_policy": "ALWAYS", "shutdown_timeout": 10,
+     "containers": [{"name": "etl", "image_url": "iad.ocir.io/tenancy/etl:v2.0.0"}]},
+    {"name": "webshop-worker", "labels": ["prod"], "restart_policy": "ALWAYS", "shutdown_timeout": 30,
+     "containers": [{"name": "worker", "image_url": "iad.ocir.io/tenancy/webshop/worker"}]},
+    {"name": "scratch-test", "labels": ["dev"], "restart_policy": "NEVER", "shutdown_timeout": 0,
+     "containers": [{"name": "app", "image_url": "busybox:1.36"}]}
+  ]
+}
